@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "title": "Web Developer",
+      "bio": "Passionate about creating amazing web experiences with React and Node.js."
+    },
+    {
+      "id": 2,
+      "name": "Brian Lee",
+      "title": "Backend Engineer",
+      "bio": "Specializes in building efficient APIs and scalable databases."
+    },
+    {
+      "id": 3,
+      "name": "Carla Gomez",
+      "title": "UX Designer",
+      "bio": "Designs intuitive interfaces that users love."
+    }
+  ]
+  
