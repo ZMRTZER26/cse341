@@ -1,0 +1,29 @@
+### Get all professionals
+GET http://localhost:3000/professionals
+
+### Get a single professional by ID
+GET http://localhost:3000/professionals/1
+
+### Create a new professional
+POST http://localhost:3000/professionals
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "New Professional",
+  "title": "New Title",
+  "bio": "This is a new professional's biography."
+}
+
+### Update a professional (for the stretch)
+PUT http://localhost:3000/professionals/1
+Content-Type: application/json
+
+{
+  "name": "Updated Professional",
+  "title": "Updated Title",
+  "bio": "Updated biography."
+}
+
+### Delete a professional (for the stretch)
+DELETE http://localhost:3000/professionals/1
