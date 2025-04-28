@@ -1,16 +1,14 @@
 const express = require('express');
+const app = express();
 const professionalRoutes = require('./routes/professional');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Middleware to parse JSON bodies
 app.use(express.json());
 
-// Mount routes
-app.use('/', professionalRoutes);
+// Routes
+app.use('/api', professionalRoutes);  // All routes in professional.js will start with /api
 
-// Start the server
+// Start server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
