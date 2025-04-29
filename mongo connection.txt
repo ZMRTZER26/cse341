@@ -1,0 +1,1 @@
+mongodb+srv://brdnhamilton:<db_password>@cluster0.awoavsc.mongodb.net/
