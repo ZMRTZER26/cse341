@@ -1,0 +1,8 @@
+GET http://localhost:8080/contacts
+
+### Get a single contact by ID
+GET http://localhost:8080/contacts/6813de8ce4570a61ee70fa71
+
+GET http://localhost:8080/contacts/6813de9de4570a61ee70fa72
+
+GET http://localhost:8080/contacts/6813deb5e4570a61ee70fa73
