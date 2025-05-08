@@ -11,7 +11,7 @@ GET https://cse341-tpkb.onrender.com/contacts
 GET http://localhost:8080/contacts/{{contactId}}
 
 ### GET contact by ID (Render)
-GET https://cse341-tpkb.onrender.com/ontacts/{{contactId}}
+GET https://cse341-tpkb.onrender.com/contacts/{{contactId}}
 
 ### POST new contact (local)
 POST http://localhost:8080/contacts
