@@ -56,7 +56,7 @@ const updateContact = async (req, res) => {
 
     try {
         const result = await mongodb.getDb().db('assignments').collection('contacts').updateOne(
-            { _id: new mongodb.ObjectId(id) },
+            { _id: new ObjectId(req.params.id) },
             { $set: updatedData }
         );
         
@@ -77,7 +77,7 @@ const deleteContact = async (req, res) => {
 
     try {
         const result = await mongodb.getDb().db('assignments').collection('contacts').deleteOne(
-            { _id: new mongodb.ObjectId(id) }
+            { _id: new ObjectId(req.params.id) }
         );
         
         if (result.deletedCount > 0) {
