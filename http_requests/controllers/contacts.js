@@ -1,3 +1,5 @@
+const mongodb = require('../db/connect');
+
 // Get all contacts
 const getContacts = async (req, res) => {
     try {
