@@ -5,13 +5,13 @@
 GET http://localhost:8080/contacts
 
 ### GET all contacts (Render)
-GET https://your-render-app.onrender.com/contacts
+GET https://cse341-tpkb.onrender.com/contacts
 
 ### GET contact by ID (local)
 GET http://localhost:8080/contacts/{{contactId}}
 
 ### GET contact by ID (Render)
-GET https://your-render-app.onrender.com/contacts/{{contactId}}
+GET https://cse341-tpkb.onrender.com/ontacts/{{contactId}}
 
 ### POST new contact (local)
 POST http://localhost:8080/contacts
@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 ### POST new contact (Render)
-POST https://your-render-app.onrender.com/contacts
+POST https://cse341-tpkb.onrender.com/contacts
 Content-Type: application/json
 
 {
@@ -46,7 +46,7 @@ Content-Type: application/json
 }
 
 ### PUT update contact (Render)
-PUT https://your-render-app.onrender.com/contacts/{{contactId}}
+PUT https://cse341-tpkb.onrender.com/contacts/{{contactId}}
 Content-Type: application/json
 
 {
@@ -57,4 +57,4 @@ Content-Type: application/json
 DELETE http://localhost:8080/contacts/{{contactId}}
 
 ### DELETE contact (Render)
-DELETE https://your-render-app.onrender.com/contacts/{{contactId}}
+DELETE https://cse341-tpkb.onrender.com/contacts/{{contactId}}
