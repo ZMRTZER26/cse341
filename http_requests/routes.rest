@@ -1,0 +1,60 @@
+# Define contactId for testing (change this ID as needed for different tests)
+@contactId=6813de8ce4570a61ee70fa71
+
+### GET all contacts (local)
+GET http://localhost:8080/contacts
+
+### GET all contacts (Render)
+GET https://your-render-app.onrender.com/contacts
+
+### GET contact by ID (local)
+GET http://localhost:8080/contacts/{{contactId}}
+
+### GET contact by ID (Render)
+GET https://your-render-app.onrender.com/contacts/{{contactId}}
+
+### POST new contact (local)
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Render",
+  "lastName": "Test",
+  "email": "render@test.com",
+  "favoriteColor": "Purple",
+  "birthday": "02/02/2002"
+}
+
+### POST new contact (Render)
+POST https://your-render-app.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Render",
+  "lastName": "Test",
+  "email": "render@test.com",
+  "favoriteColor": "Purple",
+  "birthday": "02/02/2002"
+}
+
+### PUT update contact (local)
+PUT http://localhost:8080/contacts/{{contactId}}
+Content-Type: application/json
+
+{
+  "favoriteColor": "Black"
+}
+
+### PUT update contact (Render)
+PUT https://your-render-app.onrender.com/contacts/{{contactId}}
+Content-Type: application/json
+
+{
+  "favoriteColor": "Black"
+}
+
+### DELETE contact (local)
+DELETE http://localhost:8080/contacts/{{contactId}}
+
+### DELETE contact (Render)
+DELETE https://your-render-app.onrender.com/contacts/{{contactId}}
