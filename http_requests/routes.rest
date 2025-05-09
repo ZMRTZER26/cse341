@@ -2,7 +2,10 @@
 @contactId=6813de8ce4570a61ee70fa71
 @renderUrl=https://cse341-tpkb.onrender.com
 @localHost=http://localhost:8080
-@testId=681d535a2a9af447f2a5a4ec #Remember to replace this with the new Id
+
+#Replace with new Id on POST
+@renderTestId=681d55762a9af447f2a5a4ed 
+@localTestId=681d54c13aa759cc003003c6
 
 ### GET all contacts (local)
 GET {{localHost}}/contacts
@@ -17,10 +20,10 @@ GET {{localHost}}/contacts/{{contactId}}
 GET {{renderUrl}}/contacts/{{contactId}}
 
 ### GET TEST contact by ID (local)
-GET {{localHost}}/contacts/{{testId}}
+GET {{localHost}}/contacts/{{localTestId}}
 
 ### GET TEST contact by ID (Render)
-GET {{renderUrl}}/contacts/{{testId}}
+GET {{renderUrl}}/contacts/{{renderTestId}}
 
 ### POST new contact (local)
 POST {{localHost}}/contacts/
@@ -47,7 +50,7 @@ Content-Type: application/json
 }
 
 ### PUT update contact (local)
-PUT {{localHost}}/contacts/{{testId}}
+PUT {{localHost}}/contacts/{{localTestId}}
 Content-Type: application/json
 
 {
@@ -60,7 +63,7 @@ Content-Type: application/json
 
 
 ### PUT update contact (Render)
-PUT {{renderUrl}}/contacts/{{testId}}
+PUT {{renderUrl}}/contacts/{{renderTestId}}
 Content-Type: application/json
 
 {
@@ -72,7 +75,7 @@ Content-Type: application/json
 }
 
 ### DELETE contact (local)
-DELETE {{localHost}}/contacts/{{testId}}
+DELETE {{localHost}}/contacts/{{localTestId}}
 
 ### DELETE contact (Render)
-DELETE {{renderUrl}}/contacts/{{testId}}
+DELETE {{renderUrl}}/contacts/{{renderTestId}}
