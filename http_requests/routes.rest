@@ -2,7 +2,7 @@
 @contactId=6813de8ce4570a61ee70fa71
 @renderUrl=https://cse341-tpkb.onrender.com
 @localHost=http://localhost:8080
-@testId=681d505f3aa759cc003003c5
+@testId=681d535a2a9af447f2a5a4ec #Remember to replace this with the new Id
 
 ### GET all contacts (local)
 GET {{localHost}}/contacts
@@ -15,6 +15,12 @@ GET {{localHost}}/contacts/{{contactId}}
 
 ### GET contact by ID (Render)
 GET {{renderUrl}}/contacts/{{contactId}}
+
+### GET TEST contact by ID (local)
+GET {{localHost}}/contacts/{{testId}}
+
+### GET TEST contact by ID (Render)
+GET {{renderUrl}}/contacts/{{testId}}
 
 ### POST new contact (local)
 POST {{localHost}}/contacts/
@@ -59,8 +65,8 @@ Content-Type: application/json
 
 {
   "firstName": "Updated",
-  "lastName": "Name",
-  "email": "updatedemail@example.com",
+  "lastName": "Contact",
+  "email": "updatedContact@example.com",
   "favoriteColor": "Purple",
   "birthday": "01/01/1111"
 }
