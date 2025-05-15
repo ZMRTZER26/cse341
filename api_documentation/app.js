@@ -1,11 +1,13 @@
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const contactsRouter = require('./routes/contacts');
 const mongodb = require('./db/connect');
 require('dotenv').config();
-const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('./swagger-output.json');
+
 
 
 const app = express();
@@ -17,11 +19,10 @@ const corsOptions = {
     allowedHeaders: 'Content-Type'
 };
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
-
 
 app.get('/', (req, res) => {
     res.send('API is running');

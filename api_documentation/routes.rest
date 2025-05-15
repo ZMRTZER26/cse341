@@ -7,6 +7,8 @@
 @renderTestId=681e77c19a2e4c819e91a882 
 @localTestId=681e778a85c5edfe9f48b9ac
 
+### GET api-docs (local)
+GET {{localHost}}/api-docs
 
 ### GET api-docs (Render)
 GET {{renderUrl}}/api-docs
