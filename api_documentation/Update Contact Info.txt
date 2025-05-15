@@ -1,0 +1,7 @@
+Updated contact info:
+
+  "firstName": "Updated",
+  "lastName": "Contact",
+  "email": "updatedContact@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "01/01/1111"

@@ -1,0 +1,4 @@
+@renderUrl=https://cse341-tpkb.onrender.com
+
+GET {{renderUrl}}/api-docs
+
