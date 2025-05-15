@@ -8,21 +8,22 @@ const contactsRouter = require('./routes/contacts');
 const mongodb = require('./db/connect');
 require('dotenv').config();
 
-
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 const corsOptions = {
     origin: '*',
-    methods: 'GET, POST, PUT, DELETE',
-    allowedHeaders: 'Content-Type'
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
 };
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.get('/', (req, res) => {
     res.send('API is running');
