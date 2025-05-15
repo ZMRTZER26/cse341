@@ -5,7 +5,7 @@ const contactsRouter = require('./routes/contacts');
 const mongodb = require('./db/connect');
 require('dotenv').config();
 const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('swagger-output.json');
+const swaggerFile = require('./swagger-output.json');
 
 
 const app = express();
