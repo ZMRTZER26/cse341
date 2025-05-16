@@ -8,10 +8,10 @@
 @localTestId=681e778a85c5edfe9f48b9ac
 
 ### GET api-docs (local)
-GET {{localHost}}/api-docs
+GET http://localhost:8080/api-docs
 
 ### GET api-docs (Render)
-GET {{renderUrl}}/api-docs
+GET https://cse341-tpkb.onrender.com/api-docs
 
 ### GET all contacts (local)
 GET {{localHost}}/contacts
