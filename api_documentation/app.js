@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const corsOptions = {
-    origin: '*',
+    origin: 'https://cse341-contacts-frontend.netlify.app',
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type'
 };
