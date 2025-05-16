@@ -16,10 +16,8 @@ const PORT = process.env.PORT || 8080;
 const corsOptions = {
     origin: 'https://cse341-contacts-frontend.netlify.app',
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
-    allowedHeaders: 'Content-Type, Authorization'
+    allowedHeaders: 'Content-Type'
 };
-
-app.options('*', cors(corsOptions));
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());

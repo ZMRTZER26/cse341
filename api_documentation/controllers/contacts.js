@@ -1,6 +1,6 @@
 const mongodb = require('../db/connect');
 
-const getContacts = async (requestAnimationFrame, res) => {
+const getContacts = async (req, res) => {
     try {
         const result = await mongodb.getDb().db('assignments').collection('contacts').find();
         const data = await result.toArray();
