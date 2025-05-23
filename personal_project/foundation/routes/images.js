@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const vtubersController = require('../controllers/images');
+const imagesController = require('../controllers/images');
 
-router.get('/:id', vtubersController.getImage);
-
+router.get('/:id', imagesController.getImage);
 
 module.exports = router;

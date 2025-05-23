@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts API",
-    "description": "API for managing contacts",
+    "title": "Vtuber Wiki API",
+    "description": "API for managing Vtuber info and images",
     "version": "1.0.0"
   },
   "host": "cse341-tpkb.onrender.com",
@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/": {
+    "/swagger-output.json": {
       "get": {
         "description": "",
         "responses": {
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/vtubers/": {
+    "/": {
       "get": {
         "description": "",
         "responses": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "/vtubers/{id}": {
+    "/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -156,30 +156,6 @@
         }
       },
       "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/images/{id}": {
-      "get": {
         "description": "",
         "parameters": [
           {

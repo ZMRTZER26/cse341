@@ -2,14 +2,14 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Contacts API',
-    description: 'API for managing contacts'
+    title: 'Vtuber Wiki API',
+    description: 'API for managing Vtuber info and images'
   },
   host: 'cse341-tpkb.onrender.com',
-  schemes: ['https']
+  schemes: ['https'],
 };
 
 const outputFile = './swagger-output.json';
-const endpointsFiles = ['./server.js'];
+const endpointsFiles = ['./server.js', './routes/vtubers.js', './routes/images.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
