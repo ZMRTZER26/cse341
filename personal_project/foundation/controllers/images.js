@@ -1,5 +1,5 @@
 const db = require('../models');
-const Image = db.Image;
+const Image = db.image = require('./images.js')(mongoose);
 
 const getImage = async (req, res) => {
   try {

@@ -1,5 +1,5 @@
 const db = require('../models');
-const Vtuber = db.Vtuber;
+const Vtuber = db.vtuber = require('./vtubers.js')(mongoose);
 
 const getVtubers = async (req, res) => {
   try {
