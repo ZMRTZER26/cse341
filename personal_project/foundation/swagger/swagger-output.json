@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/swagger-output.json": {
+    "/": {
       "get": {
         "description": "",
         "responses": {
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/": {
+    "/vtubers/": {
       "get": {
         "description": "",
         "responses": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "/{id}": {
+    "/vtubers/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -156,6 +156,30 @@
         }
       },
       "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/images/{id}": {
+      "get": {
         "description": "",
         "parameters": [
           {

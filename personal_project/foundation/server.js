@@ -6,7 +6,6 @@ const routes = require('./routes/index');
 const mongodb = require('./db/connect');
 require('dotenv').config();
 
-
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -17,18 +16,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-const path = require('path');
-
-// Serve swagger JSON
-app.get('/swagger-output.json', (req, res) => {
-  res.sendFile(path.join(__dirname, 'swagger', 'swagger-output.json'));
-});
-
-// Serve Swagger UI and point to the above swagger JSON URL
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, {
-  swaggerUrl: '/swagger-output.json'
-}));
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/', routes);
 
 app.get('/', (req, res) => {
   res.send('API is running');
