@@ -16,4 +16,26 @@ const getImage = async (req, res) => {
   }
 };
 
-module.exports = { getImage };
+const linkImage = async (req, res) => {
+  try {
+    const { url, artist, vtuberId} = req.body;
+
+    if (!url || !artist || !vtuberId) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const newVtuber = {
+      url,
+      artist,
+      vtuberId,
+    };
+
+    const result = await mongodb.getDb().db('personal_project').collection('images').insertOne(newImage);
+    res.status(201).json({ id: result.insertedId });
+  } catch (err) {
+    console.error('Error creating vtuber:', err.message);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+module.exports = { getImage, linkImage };
