@@ -1,0 +1,5 @@
+### GET api-docs (local)
+GET http://localhost:8080/api-docs
+
+### GET api-docs (Render)
+GET https://cse341-tpkb.onrender.com/api-docs
