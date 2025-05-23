@@ -2,11 +2,11 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Vtuber API',
-    description: 'API for managing Vtuber profiles and image galleries'
+    title: 'Contacts API',
+    description: 'API for managing contacts'
   },
-  host: process.env.NODE_ENV === 'production' ? 'cse341-tpkb.onrender.com' : `localhost:${process.env.PORT || 8080}`,
-  schemes: [process.env.NODE_ENV === 'production' ? 'https' : 'http'],
+  host: 'cse341-tpkb.onrender.com',
+  schemes: ['https']
 };
 
 const outputFile = './swagger-output.json';
