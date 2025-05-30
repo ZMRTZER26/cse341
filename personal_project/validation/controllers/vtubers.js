@@ -1,75 +1,126 @@
 const Vtuber = require("../models/vtubersModel");
 
-const getVtubers = async (req, res, next) => {
+module.exports.createVtuber = (req, res) => {
   try {
-    const vtubers = await Vtuber.find();
-    res.status(200).json(vtubers);
-  } catch (err) {
-    next(err);
-  }
-};
+    const { name, debut, agency, bio, language, status, channel } = req.body;
 
-const getSingleVtuber = async (req, res, next) => {
-  try {
-    const vtuber = await Vtuber.findById(req.params.id);
-    if (!vtuber) {
-      return res.status(404).json({ message: "Vtuber not found" });
+    // Manual validation like your prof's example
+    if (
+      !name ||
+      !debut ||
+      !agency ||
+      !bio ||
+      !language ||
+      !status ||
+      !channel
+    ) {
+      return res.status(400).json({ message: "All fields are required" });
     }
-    res.status(200).json(vtuber);
+
+    const vtuber = new Vtuber(req.body);
+    vtuber
+      .save()
+      .then((data) => res.status(201).json(data))
+      .catch((err) =>
+        res
+          .status(500)
+          .json({ message: err.message || "Error creating vtuber" })
+      );
   } catch (err) {
-    next(err);
+    res.status(500).json(err);
   }
 };
 
-const createVtuber = async (req, res, next) => {
+module.exports.getVtubers = (req, res) => {
   try {
-    const vtuber = await Vtuber.create(req.body);
-    console.log("REQ.BODY:", req.body);
-    res.status(201).json(vtuber);
+    Vtuber.find({})
+      .then((data) => res.status(200).json(data))
+      .catch((err) =>
+        res
+          .status(500)
+          .json({ message: err.message || "Error retrieving vtubers" })
+      );
   } catch (err) {
-    next(err);
+    res.status(500).json(err);
   }
 };
 
-const updateVtuber = async (req, res, next) => {
+module.exports.getSingleVtuber = (req, res) => {
+  try {
+    Vtuber.findById(req.params.id)
+      .then((data) => {
+        if (!data) return res.status(404).json({ message: "Vtuber not found" });
+        res.status(200).json(data);
+      })
+      .catch((err) =>
+        res
+          .status(500)
+          .json({ message: err.message || "Error retrieving vtuber" })
+      );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.updateVtuber = (req, res) => {
   try {
     const { id } = req.params;
+    const { name, debut, agency, bio, language, status, channel } = req.body;
 
-    const updatedVtuber = await Vtuber.findByIdAndUpdate(id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-
-    if (!updatedVtuber) {
-      return res.status(404).json({ message: "Vtuber not found" });
+    if (
+      !name ||
+      !debut ||
+      !agency ||
+      !bio ||
+      !language ||
+      !status ||
+      !channel
+    ) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
-    res.status(200).json(updatedVtuber);
+    Vtuber.findById(id)
+      .then((vtuber) => {
+        if (!vtuber)
+          return res.status(404).json({ message: "Vtuber not found" });
+
+        vtuber.name = name;
+        vtuber.debut = debut;
+        vtuber.agency = agency;
+        vtuber.bio = bio;
+        vtuber.language = language;
+        vtuber.status = status;
+        vtuber.channel = channel;
+
+        return vtuber.save();
+      })
+      .then(() => res.status(204).send())
+      .catch((err) =>
+        res
+          .status(500)
+          .json({ message: err.message || "Error updating vtuber" })
+      );
   } catch (err) {
-    next(err);
+    res.status(500).json(err);
   }
 };
 
-const deleteVtuber = async (req, res, next) => {
+module.exports.deleteVtuber = (req, res) => {
   try {
     const { id } = req.params;
-
-    const deletedVtuber = await Vtuber.findByIdAndDelete(id);
-
-    if (!deletedVtuber) {
-      return res.status(404).json({ message: "Vtuber not found" });
-    }
-
-    res.status(200).json({ message: "Vtuber successfully deleted" });
+    Vtuber.deleteOne({ _id: id })
+      .then((result) => {
+        if (result.deletedCount === 0) {
+          return res.status(404).json({ message: "Vtuber not found" });
+        }
+        res.status(204).send();
+      })
+      .catch((err) =>
+        res
+          .status(500)
+          .json({ message: err.message || "Error deleting vtuber" })
+      );
   } catch (err) {
-    next(err);
+    res.status(500).json(err);
   }
-};
-
-module.exports = {
-  getVtubers,
-  getSingleVtuber,
-  createVtuber,
-  updateVtuber,
-  deleteVtuber,
 };
