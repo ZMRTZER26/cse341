@@ -24,6 +24,7 @@ const getSingleVtuber = async (req, res, next) => {
 const createVtuber = async (req, res, next) => {
   try {
     const vtuber = await Vtuber.create(req.body);
+    console.log("REQ.BODY:", req.body);
     res.status(201).json(vtuber);
   } catch (err) {
     next(err);
