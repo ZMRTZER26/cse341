@@ -32,6 +32,38 @@
       },
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "debut": {
+                  "example": "any"
+                },
+                "agency": {
+                  "example": "any"
+                },
+                "bio": {
+                  "example": "any"
+                },
+                "language": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "channel": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -70,6 +102,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "debut": {
+                  "example": "any"
+                },
+                "agency": {
+                  "example": "any"
+                },
+                "bio": {
+                  "example": "any"
+                },
+                "language": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "channel": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
