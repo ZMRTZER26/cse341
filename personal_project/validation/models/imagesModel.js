@@ -6,4 +6,4 @@ const imageSchema = new mongoose.Schema({
   vtuberName: { type: String, required: true, trim: true },
 });
 
-module.exports = mongoose.model("Images", imageSchema);
+module.exports = mongoose.model("Images", imageSchema, "images");

@@ -10,4 +10,4 @@ const vtuberSchema = new mongoose.Schema({
   channel: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Vtuber", vtuberSchema);
+module.exports = mongoose.model("Vtuber", vtuberSchema, "vtubers");
