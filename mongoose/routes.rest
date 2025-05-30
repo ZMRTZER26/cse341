@@ -1,0 +1,87 @@
+# Define contactId for testing (change this ID as needed for different tests)
+@contactId=6813de8ce4570a61ee70fa71
+@renderUrl=https://cse341-tpkb.onrender.com
+@localHost=http://localhost:8080
+
+#Replace with new Id on POST
+@renderTestId=681e77c19a2e4c819e91a882 
+@localTestId=681e778a85c5edfe9f48b9ac
+
+### GET api-docs (local)
+GET http://localhost:8080/api-docs
+
+### GET api-docs (Render)
+GET https://cse341-tpkb.onrender.com/api-docs
+
+### GET all contacts (local)
+GET {{localHost}}/contacts
+
+### GET all contacts (Render)
+GET {{renderUrl}}/contacts
+
+### GET contact by ID (local)
+GET {{localHost}}/contacts/{{contactId}}
+
+### GET contact by ID (Render)
+GET {{renderUrl}}/contacts/{{contactId}}
+
+### GET TEST contact by ID (local)
+GET {{localHost}}/contacts/{{localTestId}}
+
+### GET TEST contact by ID (Render)
+GET {{renderUrl}}/contacts/{{renderTestId}}
+
+### POST new contact (local)
+POST {{localHost}}/contacts/
+Content-Type: application/json
+
+{
+  "firstName": "New",
+  "lastName": "Contact",
+  "email": "newContact@example.com",
+  "favoriteColor": "Yellow",
+  "birthday": "01/01/2000"
+}
+
+### POST new contact (Render)
+POST {{renderUrl}}/contacts
+Content-Type: application/json
+
+{
+  "firstName": "New",
+  "lastName": "Contact",
+  "email": "newContact@example.com",
+  "favoriteColor": "Yellow",
+  "birthday": "01/01/2000"
+}
+
+### PUT update contact (local)
+PUT {{localHost}}/contacts/{{localTestId}}
+Content-Type: application/json
+
+{
+  "firstName": "Updated",
+  "lastName": "Contact",
+  "email": "updatedContact@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "01/01/1111"
+}
+
+
+### PUT update contact (Render)
+PUT {{renderUrl}}/contacts/{{renderTestId}}
+Content-Type: application/json
+
+{
+  "firstName": "Updated",
+  "lastName": "Contact",
+  "email": "updatedContact@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "01/01/1111"
+}
+
+### DELETE contact (local)
+DELETE {{localHost}}/contacts/{{localTestId}}
+
+### DELETE contact (Render)
+DELETE {{renderUrl}}/contacts/{{renderTestId}}
