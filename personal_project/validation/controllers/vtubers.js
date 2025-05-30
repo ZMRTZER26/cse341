@@ -1,20 +1,19 @@
-const Vtuber = require('../models/vtubersModel');
+const Vtuber = require("../models/vtubersModel");
 
 const getVtubers = async (req, res, next) => {
-    try {
-        const vtubers = await Vtuber.find();
-        res.status(200).json(vtubers);
-    } catch (err) {
+  try {
+    const vtubers = await Vtuber.find();
+    res.status(200).json(vtubers);
+  } catch (err) {
     next(err);
   }
-
 };
 
-const getSingleVtuber = async (req, res) => {
+const getSingleVtuber = async (req, res, next) => {
   try {
     const vtuber = await Vtuber.findById(req.params.id);
     if (!vtuber) {
-      return res.status(404).json({ message: 'Contact not found' });
+      return res.status(404).json({ message: "Vtuber not found" });
     }
     res.status(200).json(vtuber);
   } catch (err) {
@@ -22,7 +21,7 @@ const getSingleVtuber = async (req, res) => {
   }
 };
 
-const createVtuber = async (req, res) => {
+const createVtuber = async (req, res, next) => {
   try {
     const vtuber = await Vtuber.create(req.body);
     res.status(201).json(vtuber);
@@ -31,17 +30,17 @@ const createVtuber = async (req, res) => {
   }
 };
 
-const updateVtuber = async (req, res) => {
+const updateVtuber = async (req, res, next) => {
   try {
     const { id } = req.params;
 
     const updatedVtuber = await Vtuber.findByIdAndUpdate(id, req.body, {
-      new: true,            
-      runValidators: true  
+      new: true,
+      runValidators: true,
     });
 
     if (!updatedVtuber) {
-      return res.status(404).json({ message: 'Contact not found' });
+      return res.status(404).json({ message: "Vtuber not found" });
     }
 
     res.status(200).json(updatedVtuber);
@@ -50,20 +49,26 @@ const updateVtuber = async (req, res) => {
   }
 };
 
-const deleteVtuber = async (req, res) => {
+const deleteVtuber = async (req, res, next) => {
   try {
     const { id } = req.params;
 
     const deletedVtuber = await Vtuber.findByIdAndDelete(id);
 
     if (!deletedVtuber) {
-      return res.status(404).json({ message: 'Contact not found' });
+      return res.status(404).json({ message: "Vtuber not found" });
     }
 
-    res.status(200).json({ message: 'Contact successfully deleted' });
+    res.status(200).json({ message: "Vtuber successfully deleted" });
   } catch (err) {
     next(err);
   }
 };
 
-module.exports = { getVtubers, getSingleVtuber, createVtuber, updateVtuber, deleteVtuber };
+module.exports = {
+  getVtubers,
+  getSingleVtuber,
+  createVtuber,
+  updateVtuber,
+  deleteVtuber,
+};

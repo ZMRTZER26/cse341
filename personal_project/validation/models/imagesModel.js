@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const imageSchema = new mongoose.Schema({
   url: { type: String, required: true, trim: true },
@@ -6,4 +6,4 @@ const imageSchema = new mongoose.Schema({
   vtuberName: { type: String, required: true, trim: true },
 });
 
-module.exports = mongoose.model('Images', imageSchema);
+module.exports = mongoose.model("Images", imageSchema);
