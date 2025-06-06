@@ -18,6 +18,31 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+const authRoutes = require("./routes/authRoutes");
+app.use("/auth", authRoutes);
+
+app.get("/dashboard", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send(`Welcome ${req.user.displayName}`);
+  } else {
+    res.redirect("/auth/google");
+  }
+});
+
+app.get("/login-failure", (req, res) => {
+  res.send("Failed to login.");
+});
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/", routes);
