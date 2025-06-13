@@ -10,4 +10,8 @@ http://localhost:8080/
 ### GET all Vtubers, make sure it's working outside of swagger
 http://localhost:8080/vtubers
 
-### GET single vtuber
+### OAuth Test (local)
+http://localhost:8080/auth/google
+
+### OAuth Test (Render)
+https://cse341-tpkb.onrender.com/auth/google

@@ -1,25 +1,12 @@
 const express = require("express");
-const passport = require("passport");
-
 const router = express.Router();
+const { register, login, logout } = require("../controllers/auth");
 
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+// Public routes
+router.post("/register", register);
+router.post("/login", login);
 
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    failureRedirect: "/login-failure",
-    successRedirect: "/dashboard", // you can change this
-  })
-);
-
-router.get("/logout", (req, res) => {
-  req.logout(() => {
-    res.redirect("/");
-  });
-});
+// Logout (protected or not, depends on your use)
+router.post("/logout", logout);
 
 module.exports = router;

@@ -13,8 +13,19 @@ router.post(
 
 router.get("/", vtubersController.getVtubers);
 router.get("/:id", vtubersController.getSingleVtuber);
-router.post("/", validateVtuber, vtubersController.createVtuber);
-router.put("/:id", validateVtuber, vtubersController.updateVtuber);
-router.delete("/:id", vtubersController.deleteVtuber);
+
+router.put(
+  "/:id",
+  ensureAuthenticated,
+  validateVtuber,
+  vtubersController.updateVtuber
+);
+
+router.delete(
+  "/:id",
+  ensureAuthenticated,
+  validateVtuber,
+  vtubersController.deleteVtuber
+);
 
 module.exports = router;

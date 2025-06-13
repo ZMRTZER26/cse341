@@ -13,8 +13,19 @@ router.post(
 
 router.get("/", imagesController.getImages);
 router.get("/:id", imagesController.getSingleImage);
-router.post("/", validateImage, imagesController.linkImage);
-router.put("/:id", validateImage, imagesController.updateImage);
-router.delete("/:id", imagesController.deleteImage);
+
+router.put(
+  "/:id",
+  ensureAuthenticated,
+  validateImage,
+  imagesController.updateImage
+);
+
+router.delete(
+  "/:id",
+  ensureAuthenticated,
+  validateImage,
+  imagesController.deleteImage
+);
 
 module.exports = router;
