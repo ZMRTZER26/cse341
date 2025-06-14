@@ -12,14 +12,27 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(cors({ origin: true, credentials: true }));
+app.set("trust proxy", 1);
+
+app.use(
+  cors({
+    origin: ["http://localhost:8080", "https://cse341-tpkb.onrender.com"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "secret",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      sameSite: "lax",
+    },
   })
 );
 

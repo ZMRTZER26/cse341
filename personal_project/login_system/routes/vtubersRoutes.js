@@ -21,11 +21,6 @@ router.put(
   vtubersController.updateVtuber
 );
 
-router.delete(
-  "/:id",
-  ensureAuthenticated,
-  validateVtuber,
-  vtubersController.deleteVtuber
-);
+router.delete("/:id", ensureAuthenticated, vtubersController.deleteVtuber);
 
 module.exports = router;

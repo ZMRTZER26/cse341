@@ -21,11 +21,6 @@ router.put(
   imagesController.updateImage
 );
 
-router.delete(
-  "/:id",
-  ensureAuthenticated,
-  validateImage,
-  imagesController.deleteImage
-);
+router.delete("/:id", ensureAuthenticated, imagesController.deleteImage);
 
 module.exports = router;
