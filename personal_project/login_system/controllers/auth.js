@@ -23,7 +23,6 @@ const register = async (req, res, next) => {
   }
 };
 
-// Login user
 const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
