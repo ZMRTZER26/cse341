@@ -16,11 +16,7 @@ app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:8080",
-      "http://localhost:3000",
-      "https://your-render-url.onrender.com",
-    ],
+    origin: ["http://localhost:8080", "https://cse341-tpkb.onrender.com"],
     credentials: true,
   })
 );
