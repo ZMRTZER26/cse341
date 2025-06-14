@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 
-// Register user
 const register = async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -40,7 +39,6 @@ const login = async (req, res, next) => {
     if (!isMatch)
       return res.status(401).json({ message: "Invalid credentials" });
 
-    // Store user ID in session (simple session-based login)
     req.session.userId = user._id;
 
     res.json({ message: "Login successful" });
@@ -49,7 +47,6 @@ const login = async (req, res, next) => {
   }
 };
 
-// Logout user
 const logout = (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).json({ message: "Logout error" });
