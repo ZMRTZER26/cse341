@@ -1,0 +1,1 @@
+const { friendController } = require("../controllers");
