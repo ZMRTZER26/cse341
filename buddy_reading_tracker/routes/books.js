@@ -1,12 +1,11 @@
-const mongoose = require("mongoose");
-const booksSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
-  isbn: { type: String, required: true, unique: true },
-  genre: { type: String, required: true },
-  totalPages: { type: Number, required: true },
-  description: { type: String },
-  publishedDate: { type: Date },
-});
+const express = require("express");
+const router = express.Router();
+const bookController = require("../controllers/books");
 
-module.exports = mongoose.model("Books", booksSchema);
+router.get("/", bookController.getAllBooks);
+router.post("/", bookController.addBook);
+router.get("/:id", bookController.getBookById);
+router.put("/:id", bookController.updateBook);
+router.delete("/:id", bookController.deleteBook);
+
+module.exports = router;
