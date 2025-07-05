@@ -2,7 +2,10 @@ const swaggerAutogen = require("swagger-autogen")();
 
 //Dynamically choose host
 const isRender = process.env.RENDER === "true";
+process.env.RENDER_EXTERNAL_HOSTNAME || false;
 const host = isRender ? "cse341-tpkb.onrender.com" : "localhost:3000";
+
+console.log("Using host:", host);
 
 const doc = {
   info: {
