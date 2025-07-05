@@ -2,23 +2,17 @@ const express = require("express");
 const { connect } = require("./config/db");
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger/swagger-output.json");
-const app = express();
-const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 const passport = require("passport");
-require("./config/passport");
 const cookieSession = require("cookie-session");
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
+require("./config/passport");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-
-app.use("/", require("./routes"));
 
 app.use(
   cookieSession({
@@ -29,6 +23,20 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Fake Auth for testing
+if (process.env.USE_FAKE_AUTH === "true") {
+  const fakeAuthRoutes = require("./routes/fakeAuth");
+  app.use("/fakeauth", fakeAuthRoutes);
+  console.log("Using fake auth for testing.");
+}
+
+app.get("/", (req, res) => {
+  res.send("Hello, world!");
+});
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use("/", require("./routes"));
 
 connect().then(() => {
   app.listen(PORT, () => {

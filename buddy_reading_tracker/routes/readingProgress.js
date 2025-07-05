@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const readingProgressController = require("../controllers/readingProgress");
 const authenticate = require("../middleware/authenticate");
-router.get("/", authenticate, userController.getAllUsers);
+router.get("/", authenticate, readingProgressController.getAllReadingProgress);
 
 router.get("/", readingProgressController.getAllReadingProgress);
 router.get("/:id", readingProgressController.getReadingProgressById);

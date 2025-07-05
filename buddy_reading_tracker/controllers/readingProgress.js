@@ -1,88 +1,79 @@
-const highlightsNotes = require("../models/highlightsNotes");
-//get all highlights notes
-const getAllHighlightsNotes = async (req, res) => {
+const readingProgress = require("../models/readingProgress");
+const getAllReadingProgress = async (req, res) => {
   try {
-    const notes = await highlightsNotes.find().populate("bookId");
-    res.status(200).json(notes);
+    const progress = await readingProgress.find().populate("bookId");
+    res.status(200).json(progress);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+const getReadingProgressById = async (req, res) => {
+  try {
+    const progress = await readingProgress
+      .findById(req.params.id)
+      .populate("bookId");
+    res.status(200).json(progress);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-//get highlight note by id
-const getHighlightNoteById = async (req, res) => {
-  try {
-    const highlightNote = await highlightsNotes
-      .findById(req.params.id)
-      .populate("bookId");
-    res.status(200).json(highlightNote);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-//POST new book
-const addHighlightNote = async (req, res) => {
+const addReadingProgress = async (req, res) => {
   try {
     const {
       userId, //replace later with req.user.id after authentication
       bookId,
-      pageNumber,
-      noteType,
-      content,
+      currentPage,
+      percentageComplete,
     } = req.body;
-    const highlightNote = await highlightsNotes.create({
+    const progress = await readingProgress.create({
       userId,
-      bookId,
-      pageNumber,
-      noteType,
-      content,
+      bookId: bookId,
+      currentPage,
+      percentageComplete,
     });
-    res.status(201).json(highlightNote);
+    res.status(201).json(progress);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-//PUT
-const updateHighlightNote = async (req, res) => {
+const updateReadingProgress = async (req, res) => {
   try {
     const {
       userId, //replace later with req.user.id after authentication
       bookId,
-      pageNumber,
-      noteType,
-      content,
+      currentPage,
+      percentageComplete,
     } = req.body;
-    const updatedHighlightNote = await highlightsNotes.findByIdAndUpdate(
+    const progress = await readingProgress.findByIdAndUpdate(
       req.params.id,
       {
         userId,
-        bookId,
-        pageNumber,
-        noteType,
-        content,
+        bookId: bookId,
+        currentPage,
+        percentageComplete,
       },
       { new: true, runValidators: true }
     );
-    res.status(200).json(updatedHighlightNote);
+    res.status(200).json(progress);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-//DELETE
-const deleteHighlightNote = async (req, res) => {
+
+const deleteReadingProgress = async (req, res) => {
   try {
-    const highlightNote = await highlightsNotes.findByIdAndDelete(
-      req.params.id
-    );
-    res.status(200).json(highlightNote);
+    const progress = await readingProgress.findByIdAndDelete(req.params.id);
+    res.status(200).json(progress);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 module.exports = {
-  getAllHighlightsNotes,
-  getHighlightNoteById,
-  addHighlightNote,
-  updateHighlightNote,
-  deleteHighlightNote,
+  getAllReadingProgress,
+  getReadingProgressById,
+  addReadingProgress,
+  updateReadingProgress,
+  deleteReadingProgress,
 };

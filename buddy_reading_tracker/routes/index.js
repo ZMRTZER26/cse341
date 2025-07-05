@@ -4,6 +4,7 @@ const highlightsNotesRouter = require("./highlightsNotes");
 const readingProgressRouter = require("./readingProgress");
 const userRouter = require("./users");
 const swaggerRouter = require("./swagger");
+const fakeAuthRouter = require("./fakeAuth");
 
 routes.get("/", (req, res) => {
   res.send("Welcome to the Buddy Reading Tracker API!");
@@ -18,5 +19,7 @@ routes.use("/users", userRouter);
 routes.use("/highlightnotes", highlightsNotesRouter);
 
 routes.use("/readingprogress", readingProgressRouter);
+
+routes.use("/", fakeAuthRouter);
 
 module.exports = routes;

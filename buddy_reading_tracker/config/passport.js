@@ -9,7 +9,6 @@ passport.use(
       callbackURL: "/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
-      // You can create a user or just return the profile
       return done(null, {
         id: profile.id,
         displayName: profile.displayName,
