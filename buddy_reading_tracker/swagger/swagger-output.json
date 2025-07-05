@@ -40,25 +40,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "userId": {
                   "example": "any"
                 },
-                "author": {
+                "bookId": {
                   "example": "any"
                 },
-                "isbn": {
+                "pageNumber": {
                   "example": "any"
                 },
-                "genre": {
+                "noteType": {
                   "example": "any"
                 },
-                "totalPages": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "publishedDate": {
+                "content": {
                   "example": "any"
                 }
               }
@@ -662,25 +656,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
+                "userId": {
                   "example": "any"
                 },
-                "author": {
+                "bookId": {
                   "example": "any"
                 },
-                "isbn": {
+                "pageNumber": {
                   "example": "any"
                 },
-                "genre": {
+                "noteType": {
                   "example": "any"
                 },
-                "totalPages": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "publishedDate": {
+                "content": {
                   "example": "any"
                 }
               }
