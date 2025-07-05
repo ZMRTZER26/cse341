@@ -75,7 +75,7 @@
         }
       }
     },
-    "/auth/google": {
+    "/fakeauth/auth/google": {
       "get": {
         "description": "",
         "responses": {
@@ -613,6 +613,16 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
