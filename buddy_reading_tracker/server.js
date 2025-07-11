@@ -39,7 +39,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/", require("./routes"));
 
 const errorHandler = require("./middleware/errorHandler");
-app.use(errorHandler); // <-- place at the very end
+app.use(errorHandler);
 
 connect().then(() => {
   app.listen(PORT, () => {
