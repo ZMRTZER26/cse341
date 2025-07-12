@@ -32,9 +32,9 @@ if (process.env.USE_FAKE_AUTH === "true") {
   console.log("Using fake auth for testing.");
 }
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello, world!");
+// });
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/", require("./routes"));
@@ -45,3 +45,9 @@ connect().then(() => {
     console.log(`Server is running at http://localhost:${PORT}`);
   });
 });
+// app.use((err, req, res, next) => {
+//   console.error("Unhandled error:", err); // this will show stack trace in test output
+//   res.status(500).json({ error: err.message, stack: err.stack });
+// });
+
+module.exports = app;
