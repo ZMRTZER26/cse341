@@ -25,16 +25,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// // Fake Auth for testing
-// if (process.env.USE_FAKE_AUTH === "true") {
-//   const fakeAuthRoutes = require("./routes/fakeAuth");
-//   app.use("/fakeauth", fakeAuthRoutes);
-//   console.log("Using fake auth for testing.");
-// }
+// Fake Auth for testing
+if (process.env.USE_FAKE_AUTH === "true") {
+  const fakeAuthRoutes = require("./routes/fakeAuth");
+  app.use("/fakeauth", fakeAuthRoutes);
+  console.log("Using fake auth for testing.");
+}
 
-// app.get("/", (req, res) => {
-//   res.send("Hello, world!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello, world!");
+});
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/", require("./routes"));
