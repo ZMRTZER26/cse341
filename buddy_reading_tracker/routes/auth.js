@@ -15,7 +15,7 @@ router.get("/google/callback", passport.authenticate("google"), (req, res) => {
 
 router.get("/logout", (req, res) => {
   const googleLogoutURL = "https://accounts.google.com/Logout";
-  const redirectBack = "https://buddy-reading-tracker.onrender.com/api-docs";
+  const redirectBack = "https://cse341-tpkb.onrender.com/api-docs";
   res.redirect(
     `${googleLogoutURL}?continue=${encodeURIComponent(redirectBack)}`
   );
